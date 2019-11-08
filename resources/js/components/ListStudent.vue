@@ -43,7 +43,6 @@
     }
     .table-list-student {
         width: 100%;
-        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
         border-collapse: collapse;
     }
     thead {
@@ -53,6 +52,9 @@
         padding: 5px 10px;
         border: 1px solid #ddd;
         padding: 8px;
+    }
+    th {
+        text-align: center;
     }
     .table-list-student tr:nth-child(even){background-color: #f2f2f2;}
 

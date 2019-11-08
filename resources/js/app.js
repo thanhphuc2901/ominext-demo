@@ -29,6 +29,8 @@ Vue.component('student-dashboard', require('./components/StudentDashboard.vue').
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+import '@fortawesome/fontawesome-free/css/all.css'
+import '@fortawesome/fontawesome-free/js/all.js'
 
 const app = new Vue({
     el: '#app',

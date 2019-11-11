@@ -1,3 +1,5 @@
+<!-- Component cho chức năng show dữ liệu từ db -->
+<!-- Created by phuclv - 08/11/2019 -->
 <template>
     <div class="student-dashboard">
         <a href="https://www.ominext.com/" title="Trang chủ"><div class="logo"></div></a>
@@ -7,13 +9,20 @@
                 <li><i class='fas fa-user' style="font-size:20px; margin:auto; width:18%;"></i><a href="#student_manager">Quản lý học sinh</a></li>
                 <li><i class="fas fa-book" style="font-size:20px; margin:auto; width:18%;"></i><a href="#subject">Quản lý môn học</a></li>
                 <li><i class="fas fa-newspaper" style="font-size:20px; margin:auto; width:18%;"></i><a href="#news">Tin tức</a></li>
-                <li><i class="fas fa-settings" style="font-size:20px; margin:auto; width:18%;"></i><a href="#setting">Cài đặt</a></li>
+                <li><i class="fas fa-cogs" style="font-size:20px; margin:auto; width:18%;"></i><a href="#setting">Cài đặt</a></li>
             </ul>
         </div>
         <div class="container">
             <div class="list-student-comp">
-                <h2>Danh sách học sinh</h2>
-                <!--Lắng nghe sự kiện emitted từ component con (ListStudent)-->
+                <div class="header">
+                    <h2>Danh sách học sinh</h2>
+                    <!--Lắng nghe sự kiện emitted từ component con (ListStudent)-->
+                    <div class="btn-container">
+                        <button type="button" class="btn btn-add btn-primary glyphicon glyphicon-plus"></button>
+                        <button type="button" class="btn btn-edit btn-success glyphicon glyphicon-edit"></button>
+                        <button type="button" class="btn btn-delete btn-danger glyphicon glyphicon-trash"></button>
+                    </div>
+                </div>
                 <ListStudent @studentSelected="childrenSelectStudent"></ListStudent>
             </div>
             <div class="student-detail-comp">
@@ -29,6 +38,9 @@
     import ListStudent from './ListStudent.vue'
     import StudentDetail from './StudentDetail.vue'
     export default {
+        mounted() {
+            console.log('Component mounted!')
+        },
         components: {
             ListStudent,
             StudentDetail
@@ -49,6 +61,16 @@
 
 <!--Css customize trang web-->
 <style lang="scss" scoped>
+    .header {
+        display: inline;
+    }
+    .header h2 {
+        float: left;
+        margin: 8px 0 0 0;
+    }
+    h2 {
+        margin-top: 10px;
+    }
     .student-dashboard {
         margin: 8px;
     }
@@ -119,5 +141,25 @@
         height: 100vh;
         animation: fadein 4s;
         -webkit-animation: fadein 4s;
+    }
+    .btn {
+        width: 40px;
+        height: 40px;
+        background-repeat: no-repeat;
+        margin: 5px 0px 5px 3px;
+        -webkit-transform: scale(1);
+        -moz-transform: scale(1);
+        -o-transform: scale(1);
+        -webkit-transition-duration: 0.5s;
+        -moz-transition-duration: 0.5s;
+        -o-transition-duration: 0.5s;
+    }
+    .btn:hover {
+        -webkit-transform: scale(1.15);
+        -moz-transform: scale(1.15);
+        -o-transform: scale(1.15);
+    }
+    .btn-container {
+        text-align: right;
     }
 </style>

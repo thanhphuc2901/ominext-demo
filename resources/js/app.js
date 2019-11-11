@@ -8,6 +8,20 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+import VueRouter from 'vue-router';
+Vue.use(VueRouter);
+
+import VueAxios from 'vue-axios';
+import axios from 'axios';
+
+import App from './App.vue';
+Vue.use(VueAxios, axios);
+
+import Home from './components/Home.vue';
+import CreateStudent from './components/CreateStudent.vue';
+import Index from './components/Index.vue';
+import EditStudent from './components/EditStudent.vue';
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -35,3 +49,30 @@ import '@fortawesome/fontawesome-free/js/all.js'
 const app = new Vue({
     el: '#app',
 });
+
+/* Import các component và khai báo ddinhj tuyến cho ứng dụng */
+const routes = [
+    {
+        name: 'home',
+        path: '/',
+        component: Home
+    },
+    {
+        name: 'create',
+        path: '/create',
+        component: CreateStudent
+    },
+    {
+        name: 'posts',
+        path: '/posts',
+        component: Index
+    }
+    {
+        name: 'edit',
+        path: '/edit/:id',
+        component: EditStudent
+    }
+];
+
+const router = new VueRouter({ mode: 'history', routes: routes});
+const app = new Vue(Vue.util.extend({ router }, App)).$mount('#app');
